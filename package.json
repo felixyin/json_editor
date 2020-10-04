@@ -1,0 +1,38 @@
+{
+  "name": "JsonEditor",
+  "version": "1.0.0",
+  "description": "A Json Editor Tool",
+  "main": "main.js",
+  "build": {
+    "appId": "com.qdqtrj.jsoneditor",
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "zip"
+      ]
+    }
+  },
+  "scripts": {
+    "dist": "electron-builder -mwl",
+    "start": "electron ."
+  },
+  "repository": "https://github.com/electron/electron-quick-start",
+  "keywords": [
+    "Json Editor"
+  ],
+  "author": "GitHub",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^9.0.0",
+    "electron-builder": "^22.6.1"
+  },
+  "dependencies": {
+    "jsoneditor": "^8.6.8"
+  }
+}

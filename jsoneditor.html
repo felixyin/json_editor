@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <!-- when using the mode "code", it's important to specify charset utf-8 -->
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+
+    <link href="node_modules/jsoneditor/dist/jsoneditor.min.css" rel="stylesheet" type="text/css">
+    <script src="node_modules/jsoneditor/dist/jsoneditor.min.js"></script>
+</head>
+<body>
+<center>
+    <h2>Json Editor</h2>
+    <h5>青岛前途软件</h5>
+    <textarea name="test" id="input1" cols="100" rows="5"></textarea>
+    <br>
+    <button name="out" value="输入" onclick="input();">输入</button>
+    <br>
+    <br>
+    <div id="jsoneditor" style="width: 700px; height: 400px;"></div>
+    <br>
+    <button name="out" value="输出" onclick="output();">输出</button>
+    <br>
+    <div id="output"></div>
+    <br>
+</center>
+<script>
+    function input() {
+        var jsonStr = document.getElementById('input1').value;
+        try {
+            var data = JSON.parse(jsonStr);
+            editor.set(data)
+        } catch (e) {
+            document.getElementById('output').innerHTML = e.toString();
+        }
+    }
+
+    function output() {
+        const updatedJson = editor.get();
+        document.getElementById('output').innerHTML = JSON.stringify(updatedJson);
+    }
+
+    // create the editor
+    const container = document.getElementById("jsoneditor")
+    const options = {}
+    const editor = new JSONEditor(container, options)
+
+    // set json
+    const initialJson = {
+        "isAlert": false,
+        "resultData": {
+            "total": 1,
+            "data": [
+                {
+                    "id": 1,
+                    "url": "javascript:;",
+                    "name": "数据中心",
+                    "target": "_self",
+                    "icon": "/assets/img/party_government/jdgl.png",
+                    "active": true
+                },
+                {
+                    "id": 2,
+                    "url": "javascript:;",
+                    "name": "组织架构",
+                    "target": "_self",
+                    "icon": "/assets/img/party_government/jdgl.png"
+                }
+            ]
+        }
+    }
+    editor.set(initialJson)
+</script>
+</body>
+</html>
